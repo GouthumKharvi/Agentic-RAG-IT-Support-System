@@ -6,6 +6,7 @@ root = Path(".")
 # Folders to create
 
 folders = [
+    "Agentic-RAG-demo",
     "app/api",
     "app/core",
     "app/rag",
@@ -25,6 +26,7 @@ files = [
     "ingest_sample_kb.py",
     "run.py",
     ".env",
+    "Agentic-RAG-demo/Agentic_RAG.ipynb",  # Added notebook file
 ]
 
 
@@ -36,6 +38,7 @@ for folder in folders:
 # Create files
 for file in files:
     (root / file).touch(exist_ok=True)
+
 
 
 
