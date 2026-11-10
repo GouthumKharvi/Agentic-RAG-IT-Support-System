@@ -11,9 +11,9 @@ class Settings(BaseSettings):
     groq_api_key: str = ""
     tavily_api_key: str = ""
     pinecone_api_key: str = ""
-    pinecone_index_name: str = "FDE-Agentic-RAG-IT-Support-System"
-    pinecone_namespace: str = "Company_IT_Kb"
-    embedding_model: str = "gemini-embedding-001"
+    pinecone_index_name: str = "fde-agentic-rag-it-support-system"
+    pinecone_namespace: str = "company_it_kb"
+    embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
     openai_model: str = "gpt-4o-mini"
     gemini_model: str = "gemini-2.5-flash"
     groq_model: str = "openai/gpt-oss-120b"
@@ -25,9 +25,6 @@ class Settings(BaseSettings):
     sample_kb_dir: str = str(BASE_DIR / "data" / "sample_kb")
 
     model_config = SettingsConfigDict(env_file=str(BASE_DIR / ".env"), extra="ignore")
-
-
-
 
 @lru_cache
 def get_settings() -> Settings:
