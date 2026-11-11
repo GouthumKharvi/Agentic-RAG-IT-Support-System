@@ -12,82 +12,66 @@ pip install -r requirements.txt
 
 
 
-# ⚡ Enterprise Agentic-RAG IT Support Copilot
+1. Business Problem
+Customer
+NovaRetail, a fictional 3,000-employee retail company.
 
-> An enterprise-grade, multi-agent RAG system engineered to automate IT service desk operations through hybrid private knowledge retrieval, dynamic evidence grading, and deterministic web search fallbacks.
+Problem
+The internal IT team maintains many documents: VPN instructions, password rules, MFA policy, software installation rules, laptop troubleshooting guides, and service-desk runbooks.
 
----
+Employees still create repetitive support tickets because:
 
-## 🚀 1. Business Problem & Enterprise Context
+They do not know where the correct document is.
+Traditional keyword search returns too many results.
+A normal chatbot may hallucinate an answer.
+Internal documents can be incomplete or outdated.
+Some questions require current vendor information from the public web.
+Example
+An employee asks:
 
-### 🏢 Customer Overview
-**NovaRetail** — A distributed retail enterprise (~3,000 workforce) managing high support ticket volume across corporate offices and retail locations.
+“How do I connect to the company VPN from home?”
 
-### 🛑 Operational Bottlenecks
-The internal IT team manages extensive operational documentation: VPN setup guides, password policies, MFA requirements, software provisioning rules, hardware troubleshooting, and service-desk runbooks.
+The answer exists in the private company KB, so the system should not search the public internet.
 
-Employees continue to generate repetitive support tickets due to critical structural issues:
-- **Knowledge Fragmentation:** Difficulty locating the single source of truth across scattered repos.
-- **Lexical Search Noise:** Traditional keyword search yields excessive, low-relevance document chunks.
-- **Hallucination Risk:** Generic conversational LLMs risk fabricating non-compliant security workflows.
-- **Stale Documentation:** Internal knowledge bases lack real-time coverage for external vendor outages (e.g., Microsoft 365, AWS, Okta).
+Another employee asks:
 
----
+“What is the latest Microsoft Teams outage guidance?”
 
-### 💡 Operational Execution Scenarios
+The internal KB may not contain current outage information. The system should recognize weak private evidence, use an external search, grade that evidence, and answer with an external-source warning.
 
-#### 🔒 Scenario A: In-Domain Policy Retrieval (Private KB First)
-> **User Query:** *“How do I connect to the company VPN from home?”*  
-> **System Execution:** The agent routes the query exclusively to the private vector index. Because strong grounded context exists within internal documentation, **public web search is completely bypassed** to enforce data privacy boundaries.
+Business Goal
+Build a secure IT Support Copilot that:
 
-#### 🌐 Scenario B: Out-of-Domain Fallback (Dynamic Vendor Outage Guidance)
-> **User Query:** *“What is the latest Microsoft Teams outage guidance?”*  
-> **System Execution:** Internal retrieval identifies weak/insufficient evidence. The agentic state graph automatically triggers query rewriting, executes targeted web search, evaluates incoming evidence, and synthesizes a grounded answer tagged with an external-source disclaimer.
+Searches trusted private knowledge first.
+Checks whether retrieved evidence is good enough.
+Uses web search only when private knowledge is insufficient.
+Rewrites weak queries and retries.
+Generates grounded answers.
+Shows the decision path for transparency and debugging.
+Lets authorized staff add new company documents.
+2. Why This Is an FDE Project
+A Forward Deployed Engineer does more than create an LLM notebook. The FDE must turn the customer's problem into a usable product.
 
----
-
-### 🎯 Core System Objectives
-
-```mermaid
-flowchart LR
-    A[1. Private KB Search] --> B[2. Grade Evidence]
-    B -->|Sufficient| C[5. Grounded Answer]
-    B -->|Weak| D[3. Web Search Fallback]
-    D --> E[4. Rewrite & Retry]
-    E --> B
-    C --> F[6. Live Execution Trace]
-    F --> G[7. Admin Ingestion Endpoint]
-
-Private-First Ingestion: Queries trusted corporate knowledge bases prior to external lookup.
-
-Autonomous Reflection: Evaluates context quality via an explicit evidence grading node.
-
-Deterministic Web Fallback: Invokes external web search strictly when internal context falls below quality thresholds.
-
-Adaptive Query Rewriting: Dynamically transforms ambiguous search strings to optimize retry cycles.
-
-Grounded Synthesis: Eliminates fabricated responses by enforcing strict source attribution.
-
-Execution Transparency: Renders real-time visual decision logs for debugging and system audits.
-
-Role-Gated Management: Provides protected administration endpoints for ingesting new corporate documents.
-
-🛠️ 2. Forward Deployed Engineering (FDE) Methodology
-A Forward Deployed Engineer (FDE) bridges high-level AI capabilities with robust production systems—moving beyond isolated Python notebooks to deliver end-to-end operational software.
-
-┌───────────────────────────────────────────────────────────────────────────────────┐
-│                           FDE PRODUCTION PIPELINE                                 │
-└───────────────────────────────────────────────────────────────────────────────────┘
-  [ 01. Customer Problem ]     ──► Define NovaRetail operational bottlenecks & security bounds
-  [ 02. Discovery & Req. ]     ──► Establish SLA goals, compliance needs & access controls
-  [ 03. Architecture ]         ──► Design stateful agentic graph with self-correcting loops
-  [ 04. Data Integration ]     ──► Chunk, embed & index corporate runbooks into Pinecone
-  [ 05. Agentic RAG ]          ──► Construct LangGraph orchestration layer with Groq inference
-  [ 06. API Development ]      ──► Expose asynchronous FastAPI REST endpoints & middleware
-  [ 07. User Interface ]       ──► Build modern web frontend with real-time trace telemetry
-  [ 08. Security & Testing ]   ──► Implement key-based auth, audit logging & exception handlers
-  [ 09. Cloud Deployment ]     ──► Containerize via Docker & deploy service to Render
-  [ 10. Observe & Improve ]    ──► Monitor latency metrics, fallback rates & response accuracy
+Customer Problem
+      ↓
+Discovery & Requirements
+      ↓
+Solution Architecture
+      ↓
+Data / Knowledge Integration
+      ↓
+Agentic RAG Development
+      ↓
+API Development
+      ↓
+User Interface
+      ↓
+Security + Audit + Testing
+      ↓
+Deployment
+      ↓
+Observe + Improve
+This repository demonstrates each layer.
 
 ---
 
