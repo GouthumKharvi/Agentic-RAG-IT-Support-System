@@ -56,6 +56,8 @@ Lets authorized staff add new company documents.
 
 A Forward Deployed Engineer does more than create an LLM notebook. The FDE must turn the customer's problem into a usable product.
 
+```text
+
 Customer Problem
       ↓
 Discovery & Requirements
@@ -76,6 +78,7 @@ Deployment
       ↓
 Observe + Improve
 This repository demonstrates each layer.
+```
 
 ---
 
