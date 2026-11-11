@@ -12,11 +12,12 @@ pip install -r requirements.txt
 
 
 
-1. Business Problem
+# 1. Business Problem
 Customer
 NovaRetail, a fictional 3,000-employee retail company.
 
-Problem
+## Problem
+
 The internal IT team maintains many documents: VPN instructions, password rules, MFA policy, software installation rules, laptop troubleshooting guides, and service-desk runbooks.
 
 Employees still create repetitive support tickets because:
@@ -26,7 +27,9 @@ Traditional keyword search returns too many results.
 A normal chatbot may hallucinate an answer.
 Internal documents can be incomplete or outdated.
 Some questions require current vendor information from the public web.
-Example
+
+
+## Example
 An employee asks:
 
 “How do I connect to the company VPN from home?”
