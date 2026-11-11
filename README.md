@@ -32,7 +32,7 @@ Some questions require current vendor information from the public web.
 ## Example
 An employee asks:
 
-“How do I connect to the company VPN from home?”
+### 3)How do I connect to the company VPN from home?
 
 The answer exists in the private company KB, so the system should not search the public internet.
 
