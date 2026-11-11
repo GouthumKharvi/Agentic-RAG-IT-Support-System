@@ -22,6 +22,8 @@ An end-to-end **Forward Deployed Engineer (FDE) project** that turns a notebook-
 
 <br/>
 
+### LIVE APP :  https://agentic-rag-it-support-system.onrender.com/
+
 [🧩 Business Problem](#1-business-problem) •
 [🧭 FDE](#2-why-this-is-an-fde-project) •
 [🏗️ Architecture](#3-simple-architecture) •
