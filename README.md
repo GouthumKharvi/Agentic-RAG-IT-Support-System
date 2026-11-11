@@ -13,79 +13,19 @@ pip install -r requirements.txt
 
 
 
----
-
-## 1. Business Problem
-
-### Customer
-**NovaRetail**, a fictional 3,000-employee retail company.
-
-### Problem
-The internal IT team maintains many documents: VPN instructions, password rules, MFA policy, software installation rules, laptop troubleshooting guides, and service-desk runbooks.
-
-Employees still create repetitive support tickets because:
-
-- They do not know where the correct document is.
-- Traditional keyword search returns too many results.
-- A normal chatbot may hallucinate an answer.
-- Internal documents can be incomplete or outdated.
-- Some questions require current vendor information from the public web.
-
-### Example
-An employee asks:
-
-> **“How do I connect to the company VPN from home?”**
-
-The answer exists in the private company KB, so the system should **not search the public internet**.
-
-Another employee asks:
-
-> **“What is the latest Microsoft Teams outage guidance?”**
-
-The internal KB may not contain current outage information. The system should recognize weak private evidence, use an external search, grade that evidence, and answer with an external-source warning.
-
-### Business Goal
-Build a secure IT Support Copilot that:
-
-1. Searches trusted private knowledge first.
-2. Checks whether retrieved evidence is good enough.
-3. Uses web search only when private knowledge is insufficient.
-4. Rewrites weak queries and retries.
-5. Generates grounded answers.
-6. Shows the decision path for transparency and debugging.
-7. Lets authorized staff add new company documents.
-
----
-
-## 2. Why This Is an FDE Project
-
-A Forward Deployed Engineer does more than create an LLM notebook. The FDE must turn the customer's problem into a usable product.
-
-```text
-Customer Problem
-      ↓
-Discovery & Requirements
-      ↓
-Solution Architecture
-      ↓
-Data / Knowledge Integration
-      ↓
-Agentic RAG Development
-      ↓
-API Development
-      ↓
-User Interface
-      ↓
-Security + Audit + Testing
-      ↓
-Deployment
-      ↓
-Observe + Improve
-```
-
-This repository demonstrates each layer.
-
----
+┌───────────────────────────────────────────────────────────────────────────────────┐
+│                           FDE PRODUCTION PIPELINE                                 │
+└───────────────────────────────────────────────────────────────────────────────────┘
+  [ 01. Customer Problem ]     ──► Define NovaRetail operational bottlenecks & security bounds
+  [ 02. Discovery & Req. ]     ──► Establish SLA goals, compliance needs & access controls
+  [ 03. Architecture ]         ──► Design stateful agentic graph with self-correcting loops
+  [ 04. Data Integration ]     ──► Chunk, embed & index corporate runbooks into Pinecone
+  [ 05. Agentic RAG ]          ──► Construct LangGraph orchestration layer with Groq inference
+  [ 06. API Development ]      ──► Expose asynchronous FastAPI REST endpoints & middleware
+  [ 07. User Interface ]       ──► Build modern web frontend with real-time trace telemetry
+  [ 08. Security & Testing ]   ──► Implement key-based auth, audit logging & exception handlers
+  [ 09. Cloud Deployment ]     ──► Containerize via Docker & deploy service to Render
+  [ 10. Observe & Improve ]    ──► Monitor latency metrics, fallback rates & response accuracy
 
 ## 3. Simple Architecture
 
