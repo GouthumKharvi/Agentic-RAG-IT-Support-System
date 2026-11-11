@@ -32,17 +32,17 @@ Some questions require current vendor information from the public web.
 ## Example
 An employee asks:
 
-### 3)How do I connect to the company VPN from home?
+### 1)How do I connect to the company VPN from home?
 
 The answer exists in the private company KB, so the system should not search the public internet.
 
 Another employee asks:
 
-“What is the latest Microsoft Teams outage guidance?”
+### 2)What is the latest Microsoft Teams outage guidance?”
 
 The internal KB may not contain current outage information. The system should recognize weak private evidence, use an external search, grade that evidence, and answer with an external-source warning.
 
-Business Goal
+## Business Goal
 Build a secure IT Support Copilot that:
 
 Searches trusted private knowledge first.
