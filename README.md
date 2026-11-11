@@ -49,7 +49,11 @@ Rewrites weak queries and retries.
 Generates grounded answers.
 Shows the decision path for transparency and debugging.
 Lets authorized staff add new company documents.
-2. Why This Is an FDE Project
+
+
+
+# 2. Why This Is an FDE Project
+
 A Forward Deployed Engineer does more than create an LLM notebook. The FDE must turn the customer's problem into a usable product.
 
 Customer Problem
